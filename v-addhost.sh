@@ -48,7 +48,7 @@
 sitesDir="/etc/apache2/sites-available/"
 
 # Файл с хостами
-sitesName="vova"
+sitesName="vovan"
 
 # DNS zone (если настроена локальная зона)
 zone="vovan"
@@ -90,25 +90,27 @@ if [ -n "$1" ];then
         domain=${site[1]}
         subdomain=${site[0]}
         echo "<VirtualHost *:80>" >> $sites
-        echo -e "\tDocumentRoot\t/work/"$domain"/"$subdomain"/"$public >> $sites
+        echo -e "\tDocumentRoot\t/sites/"$domain"/"$subdomain"/"$public >> $sites
         echo -e "\tServerName\t"$subdomain"."$domain >> $sites
         echo -e "\tServerAlias\t"$subdomain"."$domain$zone >> $sites
-        echo -e "\tErrorLog\t/work/"$domain"/"$subdomain"/error.log" >> $sites
-        echo -e "\tCustomLog\t/work/"$domain"/"$subdomain"/access.log common" >> $sites
-        echo -e "\t<Directory \"/work/"$domain"/"$subdomain"/"$public"\">" >> $sites
+        echo -e "\tErrorLog\t/sites/"$domain"/"$subdomain"/error.log" >> $sites
+        echo -e "\tCustomLog\t/sites/"$domain"/"$subdomain"/access.log common" >> $sites
+        echo -e "\t<Directory \"/sites/"$domain"/"$subdomain"/"$public"\">" >> $sites
         echo -e "\t\tOptions FollowSymLinks" >> $sites
+		echo -e "\t\tAllowOverride all" >> $sites
         echo -e "\t\tRequire all granted" >> $sites
         echo -e "\t</Directory>" >> $sites
         echo "</VirtualHost>" >> $sites
     else
         echo "<VirtualHost *:80>" >> $sites
-        echo -e "\tDocumentRoot\t/work/"$domain"/"$public >> $sites
+        echo -e "\tDocumentRoot\t/sites/"$domain"/"$public >> $sites
         echo -e "\tServerName\t"$domain >> $sites
         echo -e "\tServerAlias\t"$domain$zone >> $sites
-        echo -e "\tErrorLog\t/work/"$domain"/error.log" >> $sites
-        echo -e "\tCustomLog\t/work/"$domain"/access.log common" >> $sites
-        echo -e "\t<Directory \"/work/"$domain"/"$public"\">" >> $sites
+        echo -e "\tErrorLog\t/sites/"$domain"/error.log" >> $sites
+        echo -e "\tCustomLog\t/sites/"$domain"/access.log common" >> $sites
+        echo -e "\t<Directory \"/sites/"$domain"/"$public"\">" >> $sites
         echo -e "\t\tOptions FollowSymLinks" >> $sites
+		echo -e "\t\tAllowOverride all" >> $sites
         echo -e "\t\tRequire all granted" >> $sites
         echo -e "\t</Directory>" >> $sites
         echo "</VirtualHost>" >> $sites
