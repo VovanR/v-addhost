@@ -17,6 +17,7 @@
 #     ErrorLog        /sites/example/error.log
 #     CustomLog       /sites/example/access.log common
 #     <Directory "/sites/example/public">
+#         AllowOverride all
 #         Options FollowSymLinks
 #         Require all granted
 #     </Directory>
@@ -30,6 +31,7 @@
 #     ErrorLog        /sites/example/v2/error.log
 #     CustomLog       /sites/example/v2/access.log common
 #     <Directory "/sites/example/v2/public">
+#         AllowOverride all
 #         Options FollowSymLinks
 #         Require all granted
 #     </Directory>
@@ -97,7 +99,7 @@ if [ -n "$1" ];then
         echo -e "\tCustomLog\t/sites/"$domain"/"$subdomain"/access.log common" >> $sites
         echo -e "\t<Directory \"/sites/"$domain"/"$subdomain"/"$public"\">" >> $sites
         echo -e "\t\tOptions FollowSymLinks" >> $sites
-		echo -e "\t\tAllowOverride all" >> $sites
+        echo -e "\t\tAllowOverride all" >> $sites
         echo -e "\t\tRequire all granted" >> $sites
         echo -e "\t</Directory>" >> $sites
         echo "</VirtualHost>" >> $sites
@@ -110,7 +112,7 @@ if [ -n "$1" ];then
         echo -e "\tCustomLog\t/sites/"$domain"/access.log common" >> $sites
         echo -e "\t<Directory \"/sites/"$domain"/"$public"\">" >> $sites
         echo -e "\t\tOptions FollowSymLinks" >> $sites
-		echo -e "\t\tAllowOverride all" >> $sites
+        echo -e "\t\tAllowOverride all" >> $sites
         echo -e "\t\tRequire all granted" >> $sites
         echo -e "\t</Directory>" >> $sites
         echo "</VirtualHost>" >> $sites
