@@ -50,6 +50,14 @@ public="public"
 # Logics #
 ##########
 
+# check if user is root
+if [ $(whoami) == "root" ] ; then
+	echo -e "\nThis script must be run as a normal user with sudo privileges\n"
+	exit 2
+	# Return 2
+	# Exit Status: Incorrect usage
+fi
+
 # Составляем путь до файла хостов
 sites=${sitesAvailableDir}"/"${sitesName}
 
