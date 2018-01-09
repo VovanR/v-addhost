@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # v-addhost, version 0.6
 #
 # Скрипт добавляет новый хост в апач
